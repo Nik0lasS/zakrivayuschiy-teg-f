@@ -1,1 +1,1 @@
-https://github.com/Nik0lasS/slozhno-sosredotochitsya.git
+https://github.com/Nik0lasS/zakrivayuschiy-teg-f.git
