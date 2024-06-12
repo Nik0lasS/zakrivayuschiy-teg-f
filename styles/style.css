@@ -21,9 +21,11 @@
   background-color: var(--background-color);
   background-image: var(--background-image);
   background-size: cover;
+  background-attachment: fixed;
   font-variation-settings: 'wght' 400;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  
 }
 
 .header {
@@ -49,6 +51,10 @@
   font-weight: normal;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-transform: uppercase;
+}
+
+.header__logo:focus-visible {
+  outline: none;
 }
 
 .header__logo-text {
@@ -84,6 +90,7 @@
   line-height: 14px;
   text-transform: uppercase;
   background-color: transparent;
+  transition: opacity 0.3s ease;
 }
 
 .theme-menu__button:disabled::before {
@@ -95,13 +102,11 @@
 .theme-menu__button:disabled {
   padding-inline-start: 0;
   opacity: 0.6;
-  transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
 .theme-menu__button:hover {
   opacity: 0.6;
-  transition: opacity 0.3s ease;
   cursor: pointer;
 }
 
@@ -154,10 +159,14 @@
 .main__content-card-image-group {
   display: flex;
   flex-direction: column;
+  position: relative;
+  border-block-start: 2px solid var(--main-color);
+  border-block-end: 2px solid var(--main-color);
 }
 
 .main__content-card-image {
-  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .card-image {
@@ -194,6 +203,8 @@
 
 .main__content-card-image-label {
   position: absolute;
+  top: 0;
+  right: 0;
   align-self: flex-end;
   margin-inline-end: clamp(0.8125rem, 0.5044rem + 1.3146vw, 1.6875rem);
   margin-block-start: 25px;
@@ -216,7 +227,7 @@
   (text-stroke: 1px var(--card-image-label-stroke-color)) or
     (-webkit-text-stroke: 1px var(--card-image-label-stroke-color))
 ) {
-  
+
   .main__content-card-image-label {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--card-image-label-stroke-color);
@@ -248,6 +259,8 @@
   padding: 0;
   background-color: transparent;
   block-size: 100%;
+  transition: outline 0.3s ease;
+  cursor: pointer;
 }
 
 .card__icon-button:focus {
@@ -256,7 +269,6 @@
 
 .card__icon-button:focus-visible {
   outline: 2px solid var(--main-color);
-  transition: outline 0.3s ease;
 }
 
 .sparks {
@@ -264,41 +276,41 @@
 }
 
 .like-icon .heart .core {
-  transition: fill 0.3s 0.05s;
+  transition: fill 0.3s 0.03s linear;
 }
 
 .like-icon .heart .main-body {
-  transition: fill 0.3s;
+  transition: fill 0.3s linear;
 }
 
 .like-icon:hover .heart .core {
   fill: var(--heart-contour-color);
-  transition: fill 0.3s;
+  transition: fill 0.3s linear;
 }
 
 .like-icon:hover .heart .main-body {
   fill: var(--heart-contour-color);
-  transition: fill 0.3s 0.05s;
+  transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon:active .heart .core {
   fill: var(--heart-fill-color);
-  transition: fill 0.3s;
+  transition: fill 0.3s linear;
 }
 
 .like-icon:active .heart .main-body {
   fill: var(--heart-fill-color);
-  transition: fill 0.3s 0.05s;
+  transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon.is-liked .heart .core {
   fill: var(--heart-fill-color);
-  transition: fill 0.3s;
+  transition: fill 0.3s linear;
 }
 
 .like-icon.is-liked .heart .main-body {
   fill: var(--heart-fill-color);
-  transition: fill 0.3s 0.05s;
+  transition: fill 0.3s 0.05s linear;
 }
 
 .contour {
@@ -307,39 +319,40 @@
 
 .like-icon.is-liked .heart .contour {
   fill: var(--heart-fill-color);
-  transition: fill 0.3s 0.06s;
+  transition: fill 0.3s 0.06s linear;
 }
 
 .like-icon.is-liked .heart {
   transform-origin: center;
-  animation: heart-scale 0.3s ease-in 0.1s;
+  animation: heart-scale 0.3s ease-in 0.1s alternate;
 }
 
 .like-icon.is-liked .sparks {
-  animation: heart-sparks 0.3s ease-in 0.3s;
+  animation: heart-sparks 0.3s ease-in 0.3s alternate;
 }
 
-.card__like-button {
+.button-style {
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 2px solid var(--main-color);
-  padding: 11px 0;
-  background-color: transparent;
-  inline-size: 130px;
-}
-
-.card__like-button:focus {
-  outline: none;
-}
-
-.card__like-button:focus-visible {
-  box-shadow: 2px 2px 0 0 #000;
+  background-color: var(--background-color);
   outline: none;
   transition: 0.3s ease;
+  cursor: pointer;
 }
 
-.card__like-button:after {
+.button-style:focus {
+  outline: none;
+}
+
+.button-style:focus-visible {
+  box-shadow: 2px 2px 0 0 #000;
+  outline: none;
+}
+
+.button-style:after {
   content: '';
   position: absolute;
   inset: 0;
@@ -351,8 +364,13 @@
   block-size: 100%;
 }
 
-.card__like-button:hover::after {
+.button-style:hover::after {
   transform: scaleX(1);
+}
+
+.card__like-button {
+  padding: 11px 0;
+  inline-size: 130px;
 }
 
 .button__text {
@@ -375,40 +393,9 @@
 }
 
 .footer__button {
-  position: relative;
-  display: flex;
-  align-items: center;
   gap: 8px;
   margin: 50px 0 100px;
-  border: 2px solid var(--main-color);
   padding: 15px 20px;
-  background-color: var(--background-color);
-}
-
-.footer__button:focus {
-  outline: none;
-}
-
-.footer__button:focus-visible {
-  box-shadow: 2px 2px 0 0 #000;
-  outline: none;
-  transition: 0.3s ease;
-}
-
-.footer__button:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--main-color);
-  transition: 0.5s ease-in-out;
-  transform: scaleX(0);
-  transform-origin: left center;
-  inline-size: 100%;
-  block-size: 100%;
-}
-
-.footer__button:hover::after {
-  transform: scaleX(1);
 }
 
 .footer__button-icon {
@@ -452,71 +439,19 @@
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
-  inline-size: clamp(12.375rem, 11.5827rem + 3.3803vw, 14.625rem);
+  inline-size: clamp(12.635rem, 11.5827rem + 3.3803vw, 14.625rem);
 }
 
 .dialog__button {
-  display: flex;
-  justify-content: center;
-  border: 2px solid var(--main-color);
   padding: 11px 0;
-  outline: none;
-  background-color: transparent;
   inline-size: 100%;
 }
 
 .dialog__button-text {
-  font-family: var(--accent-font);
-  font-size: 14px;
   line-height: 13px;
   text-transform: uppercase;
 }
 
 #dialog::backdrop {
   background-color: rgb(0 0 0 / 0.75);
-}
-
-@keyframes move-arrow {
-
-  0% {
-    translate: -2px;
-  }
-
-  100% {
-    translate: 2px;
-  }
-}
-
-@keyframes heart-scale {
-
-  0% {
-    scale: 1;
-  }
-
-  100% {
-    scale: 1.2;
-  }
-}
-
-@keyframes heart-sparks {
-
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@media (width <= 376px) {
-
-  .footer__button {
-    flex-direction: column;
-  }
-
-  .footer__button-icon {
-    inline-size: 28px;
-    block-size: 28px;
-  }
 }

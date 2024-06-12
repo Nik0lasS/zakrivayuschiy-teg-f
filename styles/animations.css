@@ -12,3 +12,48 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes move-arrow {
+
+  0% {
+    translate: -2px;
+  }
+
+  100% {
+    translate: 2px;
+  }
+}
+
+@keyframes heart-scale {
+
+  0% {
+    scale: 1;
+  }
+
+  100% {
+    scale: 1.2;
+  }
+}
+
+@keyframes heart-sparks {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (width <= 376px) {
+
+  .footer__button {
+    flex-direction: column;
+  }
+
+  .footer__button-icon {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+}
