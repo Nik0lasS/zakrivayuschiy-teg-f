@@ -22,7 +22,7 @@
   background-image: var(--background-image);
   background-size: cover;
   background-attachment: fixed;
-  font-variation-settings: 'wght' 400;
+  font-variation-settings: 'wght' var(--card-text-font-weight);
   min-inline-size: 320px;
   min-block-size: 100dvb;
   
@@ -348,8 +348,7 @@
 }
 
 .button-style:focus-visible {
-  box-shadow: 2px 2px 0 0 #000;
-  outline: none;
+  box-shadow: 2px 2px 0 0 var(--main-color);
 }
 
 .button-style:after {
@@ -439,7 +438,7 @@
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
-  inline-size: clamp(12.635rem, 11.5827rem + 3.3803vw, 14.625rem);
+  inline-size: clamp(12.905rem, 11.5827rem + 3.3803vw, 14.625rem);
 }
 
 .dialog__button {
